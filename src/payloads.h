@@ -10,8 +10,9 @@ USBHIDKeyboard Keyboard;
 // Variabile de stare pentru execuția asincronă
 bool isTyping = false;
 String currentPayload = "";
+String customTextBuffer = ""; // Buffer pentru textul din Web UI
 
-// Helper: Simulează apăsarea Win+R (Run dialog pe Windows)
+// Helper: Simulează apăsarea Win+R
 void pressWinR() {
     Keyboard.press(KEY_LEFT_GUI);
     Keyboard.press('r');
@@ -20,7 +21,6 @@ void pressWinR() {
 }
 
 // Funcție custom pentru a scrie text fără să pierdem caractere
-// ESP32-S3 e mult mai rapid decât buffer-ul OS-ului, deci punem 10ms între taste
 void typeString(String text) {
     for (int i = 0; i < text.length(); i++) {
         Keyboard.write(text[i]);
@@ -59,6 +59,14 @@ void payload_cmd() {
     delay(50);
     Keyboard.press(KEY_RETURN);
     Keyboard.releaseAll();
+}
+
+// ==========================================
+// CUSTOM INPUT
+// ==========================================
+
+void payload_custom() {
+    typeString(customTextBuffer);
 }
 
 // Dispatcher
