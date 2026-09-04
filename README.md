@@ -10,6 +10,8 @@
 ![USB](https://img.shields.io/badge/USB-TinyUSB%20HID-4A4A4A?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-3DA639?style=for-the-badge)
 
+<img src="docs/images/demo.gif" alt="Live demo of the BadUSB hub running a payload" width="720">
+
 </div>
 
 ---
